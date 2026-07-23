@@ -1,96 +1,132 @@
-# Anagha K T P — Portfolio
+# Anagha K T P | AI Engineer Portfolio
 
-A static, dependency-free portfolio site. No build step required — it's plain HTML/CSS/JS.
+[![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-blue?style=flat-square)](https://anaghaktp.github.io/anaghaktp-portfolio/)
+[![License](https://img.shields.io/badge/License-Copyright%20%C2%A9%202026-green?style=flat-square)](#license)
 
-## File structure
+A modern, responsive portfolio showcasing my work as an AI Engineer, Generative AI Developer, and Python Backend Developer. It is built completely framework-free using modern HTML5, CSS3, and JavaScript, designed to load instantly and look premium.
+
+## Live Demo
+
+Explore the live portfolio at:
+👉 **[https://anaghaktp.github.io/anaghaktp-portfolio/](https://anaghaktp.github.io/anaghaktp-portfolio/)**
+
+---
+
+## Features
+
+*   **Responsive Design**: Handcrafted grid and flexbox layouts optimized for mobile, tablet, laptop, and desktop viewports.
+*   **Premium Dark UI**: Implements a curated dark color palette, neon accent glows, and smooth gradient text.
+*   **AI-Inspired Hero**: Features an interactive particle/node-graph canvas overlay and a custom floating portrait.
+*   **Interactive Case Studies**: In-depth case studies for DocMind and Grama Waste Tracker built into relative layout routes.
+*   **GitHub API Integration**: Pulls and displays live repository statistics and tags using the public GitHub REST API.
+*   **Professional Profile Section**: Highlights expertise, tech stacks, and professional certifications.
+*   **Custom Cursor & Hover Effects**: Implements a custom hover-scale cursor and subtle scale-zooms on key interactive elements.
+*   **Scroll Animations**: Entrance animations (`fade-in` and `slide-up`) triggered dynamically as the user scrolls.
+*   **Accessibility Improvements**: Clean semantic landmarks, skiplinks, keyboard-navigable items, and visible outlines.
+*   **SEO Optimized**: Custom metadata tags, JSON-LD schema, robots.txt, and sitemap.xml.
+*   **GitHub Pages Ready**: Lightweight, zero-build static website.
+
+---
+
+## Tech Stack
+
+*   **HTML5**: Semantic document structure.
+*   **CSS3 (Vanilla)**: Grid/Flexbox layouts, Custom variables (`:root`), transitions, and keyframe animations.
+*   **JavaScript (ES6)**: Canvas animations, custom cursor logic, GitHub API requests, dynamic UI rendering, and page load timers.
+*   **GitHub REST API**: Asynchronous repository details retrieval.
+*   **SVG**: Lightweight, scalable vector assets.
+*   **Google Fonts**: Space Grotesk, Inter, and JetBrains Mono.
+
+---
+
+## Project Structure
 
 ```
-portfolio/
-├── index.html                     # main site
-├── case-study-docmind.html        # project case study 1
-├── case-study-waste-tracker.html  # project case study 2
-├── 404.html                       # custom not-found page
-├── robots.txt
-├── sitemap.xml
-└── assets/
-    ├── style.css                  # all styles
-    ├── interactions.js            # cursor, tilt, scroll progress, etc.
-    ├── favicon.svg
-    └── profile.png
+anaghaktp-portfolio/
+├── index.html                     # Homepage and main portfolio panel
+├── case-study-docmind.html        # DocMind project case study page
+├── case-study-waste-tracker.html  # Grama Waste Tracker project case study page
+├── 404.html                       # Custom 404 page (not-found route)
+├── robots.txt                     # SEO crawling configurations
+├── sitemap.xml                    # Sitemap for search engine indexers
+└── assets/                        # Directory for stylesheet, scripts, and static files
+    ├── style.css                  # Core stylesheet (nav, hero, about, projects, forms)
+    ├── interactions.js            # Custom interactive scripts (cursor, floating widgets, count-ups)
+    ├── favicon.svg                # Vector site favicon
+    ├── profile.webp               # Main optimized WebP portrait photo (LCP optimized)
+    └── profile.png                # Fallback PNG portrait photo
 ```
 
-Keep this folder structure intact — pages reference each other and the assets
-folder by relative path.
+---
 
-## Before you deploy
+## GitHub Pages Deployment
 
-1. **Replace placeholder contact info** in `index.html` — search for
-   `anaghaktp.email@example.com` and the phone number placeholder.
-2. **Link your real resume PDF** — in `index.html`, find `id="resume-btn"`
-   and either point its `href` at a hosted PDF or remove the JS alert in
-   `assets/interactions.js`/inline script that currently intercepts the click.
-3. **Update the canonical/OG URLs** — every page has
-   `https://anaghaktp.github.io/anaghaktp-portfolio/...` as the domain in
-   `<link rel="canonical">` and Open Graph tags. Update `sitemap.xml` and
-   `robots.txt` to match.
-4. **Fill in certifications** — the certifications section currently has
-   placeholder titles; add your real certificate names and issuers.
-5. **GitHub API rate limits** — the live GitHub dashboard calls the public
-   REST API unauthenticated (60 requests/hour per visitor IP). Fine for
-   personal use and low traffic; if this site gets real recruiter traffic,
-   consider caching the response server-side (see "Scaling up" below).
+This portfolio is hosted for free using **GitHub Pages**. To deploy it:
 
-## Deploy — Vercel (recommended, free)
+1.  **Push to GitHub**: Push the repository files to your public GitHub repository:
+    ```powershell
+    git add .
+    git commit -m "Update portfolio files"
+    git push -u origin main
+    ```
+2.  **Enable GitHub Pages**:
+    *   Navigate to your repository page on GitHub.
+    *   Click on **Settings** > **Pages** in the left-hand sidebar.
+    *   Under **Build and deployment > Source**, select **Deploy from a branch**.
+    *   Under **Branch**, select **`main`** and **`/ (root)`**, then click **Save**.
+3.  **Access Your Site**:
+    The live site is published automatically at:
+    👉 **[https://anaghaktp.github.io/anaghaktp-portfolio/](https://anaghaktp.github.io/anaghaktp-portfolio/)**
 
-1. Push this folder to a GitHub repository.
-2. Go to [vercel.com](https://vercel.com) → New Project → import the repo.
-3. Framework preset: **Other** (it's static HTML, no build command needed).
-4. Deploy. Vercel will serve `index.html` at your root domain automatically.
-5. Once you have your real URL (like your GitHub Pages or custom domain URL), update the
-   canonical/OG URLs mentioned above and redeploy.
+---
 
-## Deploy — Netlify (also free, drag-and-drop option)
+## Performance
 
-1. Go to [app.netlify.com/drop](https://app.netlify.com/drop).
-2. Drag the whole `portfolio/` folder in. Done — no config needed.
-3. For a custom domain or CI redeploys on push, connect the GitHub repo
-   instead via "Add new site → Import from Git".
+*   **Optimized Images**: Eagerly serves highly-compressed WebP format (`18 KB`) in the Hero section with PNG fallback.
+*   **Zero Build Overhead**: Since the project is built in native web technologies, there are no bundlers, compilation delays, or dependency bloat.
+*   **Lightweight Assets**: Clean code and minimal assets ensure near-perfect Google Lighthouse performance scores.
 
-## Deploy — GitHub Pages (free, ties to your GitHub account)
+---
 
-1. Push this folder to a repo (e.g. `anaghaktp.github.io` for a root-level
-   site, or any repo name + enable Pages for a project site).
-2. Repo Settings → Pages → Source: deploy from the `main` branch, root folder.
-3. Your site will be live at `https://<username>.github.io/<repo>/`.
+## Accessibility
 
-## Custom domain
+*   **Semantic Landmarks**: Uses standard HTML5 tags (`<main>`, `<nav>`, `<section>`, `<article>`) for screen readers.
+*   **Skip Links**: Implements a "Skip to content" link for keyboard users.
+*   **Keyboard Navigation**: All interactive elements have focus states and keybind listeners for `Space` and `Enter`.
+*   **prefers-reduced-motion Support**: Floating photo animations and interactive canvas backgrounds are automatically disabled if the user has disabled motion in their operating system settings.
 
-All three platforms above support attaching a custom domain for free
-(you only pay your domain registrar). Add the domain in the platform's
-dashboard and follow their DNS instructions (usually a CNAME or A record).
+---
 
-## Performance & accessibility notes
+## Browser Support
 
-- Fonts load via Google Fonts with `display=swap` so text isn't blocked
-  waiting on font download.
-- The hero's animated node-graph canvas and custom cursor are both
-  disabled automatically for visitors with `prefers-reduced-motion`
-  enabled in their OS/browser settings — this also saves CPU/battery
-  for them.
-- All images use `max-width:100%` and the profile photo is pre-cropped
-  server-side (not resized in-browser) to avoid layout shift.
-- Semantic landmarks (`<main>`, `<nav aria-label>`) and a skip-to-content
-  link are in place; interactive elements have visible focus outlines
-  for keyboard navigation.
-- Run Lighthouse yourself after deploying (Chrome DevTools → Lighthouse)
-  — scores depend partly on your hosting's TLS/CDN setup, which I can't
-  control from static files alone.
+Fully optimized for the latest stable versions of all modern browsers:
+*   Google Chrome
+*   Microsoft Edge
+*   Mozilla Firefox
+*   Apple Safari
 
-## Scaling up later
+---
 
-If you outgrow a single static bundle — a real blog with MDX, a
-server-cached GitHub dashboard, EmailJS-free server-side contact form,
-Calendly embed — that's when moving to a proper Next.js project makes
-sense. This static version is deliberately dependency-free so you can
-either keep it as-is indefinitely or migrate it into Next.js later
-without starting over on content or design.
+## Future Improvements
+
+*   Integrate additional Generative AI/Agentic engineering projects.
+*   Add a custom technical blog.
+*   Document more in-depth engineering case studies.
+*   Add verification links for new cloud & AI certifications.
+
+---
+
+## License
+
+Copyright © 2026 Anagha K T P.  
+All rights reserved.
+
+---
+
+## Author
+
+**Anagha K T P**  
+AI Engineer & Generative AI Developer
+
+*   **GitHub**: [@ANAGHAKTP](https://github.com/ANAGHAKTP)
+*   **Portfolio**: [https://anaghaktp.github.io/anaghaktp-portfolio/](https://anaghaktp.github.io/anaghaktp-portfolio/)
