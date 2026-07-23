@@ -32,12 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
     })();
 
     document.addEventListener('mouseover', (e) => {
-      if(e.target.closest('a, button, .skill-card, .project-head, .gh-repo-card, .cert-card, [data-toggle]')){
+      if(e.target.closest('a, button, .skill-card, .project-head, .gh-repo-card, .cert-card, [data-toggle], .resume-card')){
         ring.classList.add('hovering');
       }
     });
     document.addEventListener('mouseout', (e) => {
-      if(e.target.closest('a, button, .skill-card, .project-head, .gh-repo-card, .cert-card, [data-toggle]')){
+      if(e.target.closest('a, button, .skill-card, .project-head, .gh-repo-card, .cert-card, [data-toggle], .resume-card')){
         ring.classList.remove('hovering');
       }
     });
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // tilt on cards
   document.addEventListener('mousemove', (e) => {
-    const card = e.target.closest('.skill-card, .gh-repo-card, .cert-card');
+    const card = e.target.closest('.skill-card, .gh-repo-card, .cert-card, .resume-card');
     if(card){
       card.classList.add('tilt-el');
       const r = card.getBoundingClientRect();
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
   document.addEventListener('mouseout', (e) => {
-    const card = e.target.closest('.skill-card, .gh-repo-card, .cert-card');
+    const card = e.target.closest('.skill-card, .gh-repo-card, .cert-card, .resume-card');
     if(card && (!e.relatedTarget || !card.contains(e.relatedTarget))){
       card.style.transform = '';
     }
