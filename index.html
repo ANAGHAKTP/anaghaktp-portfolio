@@ -702,7 +702,7 @@ cFilterBtns.forEach(btn => {
 
 // live GitHub dashboard with featured repo selection, caching, & skeletons
 const GH_USER = 'ANAGHAKTP';
-const FEATURED_REPOS_ORDER = ['docmind', 'grama-waste-tracker', 'waste-tracker', 'fraudshield-ai', 'portfolio', 'freelancing_portfolio'];
+const FEATURED_ALLOWLIST = ['docmind', 'grama-waste-tracker', 'fraudshield-ai', 'anaghaktp-portfolio'];
 
 const CURATED_FEATURED_REPOS = [
   {
@@ -742,8 +742,8 @@ const CURATED_FEATURED_REPOS = [
     tags: ['Python', 'TensorFlow', 'Scikit-Learn', 'ML']
   },
   {
-    name: 'Portfolio',
-    slug: 'portfolio',
+    name: 'anaghaktp-portfolio',
+    slug: 'anaghaktp-portfolio',
     description: 'Personal portfolio website showcasing AI engineering projects, RAG pipelines, machine learning architectures, and interactive case studies.',
     language: 'JavaScript',
     stargazers_count: 8,
@@ -872,18 +872,24 @@ async function loadGitHub(){
 
   let selectedRepos = [];
   if (repos && repos.length > 0) {
-    FEATURED_REPOS_ORDER.forEach(featuredName => {
-      const found = repos.find(r => r.name.toLowerCase() === featuredName.toLowerCase());
-      if (found && !selectedRepos.some(r => r.id === found.id)) {
-        selectedRepos.push(found);
+    FEATURED_ALLOWLIST.forEach(name => {
+      const found = repos.find(r => r.name.toLowerCase() === name.toLowerCase());
+      if (found) {
+        const curated = CURATED_FEATURED_REPOS.find(c => c.slug.toLowerCase() === name.toLowerCase());
+        const merged = {
+          ...found,
+          caseStudyUrl: curated ? curated.caseStudyUrl : '',
+          description: (curated && curated.description) ? curated.description : found.description,
+          tags: curated ? curated.tags : getRepoTags(found)
+        };
+        selectedRepos.push(merged);
+      } else {
+        const curated = CURATED_FEATURED_REPOS.find(c => c.slug.toLowerCase() === name.toLowerCase());
+        if (curated) {
+          selectedRepos.push(curated);
+        }
       }
     });
-
-    const remaining = repos
-      .filter(r => !selectedRepos.some(sr => sr.id === r.id))
-      .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
-
-    selectedRepos = selectedRepos.concat(remaining).slice(0, 4);
   }
 
   if (selectedRepos.length === 0) {
