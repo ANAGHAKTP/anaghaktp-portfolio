@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grama Waste Tracker — Case Study | Anagha K T P</title>
+<meta name="description" content="How Anagha K T P built Grama Waste Tracker, an Android waste-management app with a full AI-integration architecture.">
+<meta name="theme-color" content="#060814">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://anaghaktp.github.io/anaghaktp-portfolio/case-study-waste-tracker.html">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Grama Waste Tracker — Case Study | Anagha K T P">
+<meta property="og:description" content="How Anagha K T P built Grama Waste Tracker, an Android waste-management app with a full AI-integration architecture.">
+<meta property="og:url" content="https://anaghaktp.github.io/anaghaktp-portfolio/case-study-waste-tracker.html">
+<meta property="og:image" content="https://anaghaktp.github.io/anaghaktp-portfolio/assets/profile.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Grama Waste Tracker — Case Study | Anagha K T P">
+<meta name="twitter:description" content="How Anagha K T P built Grama Waste Tracker, an Android waste-management app with a full AI-integration architecture.">
+<meta name="twitter:image" content="https://anaghaktp.github.io/anaghaktp-portfolio/assets/profile.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+<div id="page-loader" role="status" aria-live="polite"><div class="loader-mark">A.KTP<div class="loader-bar"></div></div></div>
+
+<nav class="scrolled" id="nav" aria-label="Primary">
+  <div class="nav-inner">
+    <div class="logo">A<span>.</span>KTP</div>
+    <div class="nav-links">
+      <a href="index.html#about">About</a>
+      <a href="index.html#skills">Skills</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#experience">Experience</a>
+    </div>
+    <a href="index.html#contact" class="nav-cta">Get in touch</a>
+  </div>
+</nav>
+
+<main id="main">
+<header class="cs-hero">
+  <div class="wrap">
+    <a href="index.html#projects" class="cs-back">&larr; Back to projects</a>
+    <div class="cs-meta-row">
+      <span class="tag">Android</span><span class="tag">AI/ML</span><span class="tag">Backend</span>
+    </div>
+    <h1 class="cs-title">Grama Waste Tracker (PashuSwasthya)</h1>
+    <p class="cs-sub">A village waste-management Android application paired with a full AI-integration architecture for classification, forecasting, and route optimization.</p>
+    <div class="cs-quicklinks">
+      <a href="https://github.com/ANAGHAKTP" target="_blank" class="btn btn-ghost">View on GitHub</a>
+      <a href="index.html?project=grama-waste#contact" class="btn btn-primary btn-discuss" data-project-id="grama-waste">Discuss this project</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="cs-section">
+    <h2>Overview</h2>
+    <p>Grama Waste Tracker is an Android application built to give villages a digital system for tracking and managing waste collection, developed during an Android development internship. Alongside the app, I designed a full AI-integration architecture to make the system genuinely intelligent rather than just a digital logbook.</p>
+  </section>
+
+  <section class="cs-section">
+    <h2>Problem statement</h2>
+    <p>Villages lacked any structured, digital way to track waste generation, classify what was being collected, or plan collection routes efficiently. Collection was largely manual and unoptimized, with no forecasting or systematic classification in place.</p>
+  </section>
+
+  <section class="cs-section">
+    <h2>Architecture</h2>
+    <div class="cs-two-col">
+      <div>
+        <p>The Android app handles data capture and tracking in the field. Behind it, the designed architecture adds three AI capabilities: computer-vision-based waste classification, demand forecasting, and collection-route optimization — backed by a FastAPI service and PostgreSQL database, containerized for deployment.</p>
+        <ul class="cs-list">
+          <li>Android app (Kotlin) for on-the-ground data capture and tracking</li>
+          <li>YOLOv8 model for image-based waste classification</li>
+          <li>Prophet time-series model for waste-volume demand forecasting</li>
+          <li>OR-Tools for optimizing collection routes</li>
+          <li>FastAPI + PostgreSQL backend, containerized with Docker</li>
+        </ul>
+      </div>
+      <div class="cs-diagram">
+        <svg viewBox="0 0 460 340" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arrow2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+              <path d="M0,0 L8,4 L0,8 Z" fill="#4FD8EE"/>
+            </marker>
+          </defs>
+          <rect x="20" y="20" width="130" height="50" rx="8" fill="none" stroke="#34D399" stroke-width="1.2"/>
+          <text x="85" y="49" fill="#E7E9F5" font-size="12" text-anchor="middle" font-family="Inter">Android app</text>
+
+          <rect x="20" y="140" width="130" height="50" rx="8" fill="none" stroke="#4FD8EE" stroke-width="1.2"/>
+          <text x="85" y="162" fill="#E7E9F5" font-size="12" text-anchor="middle" font-family="Inter">FastAPI</text>
+          <text x="85" y="177" fill="#E7E9F5" font-size="12" text-anchor="middle" font-family="Inter">backend</text>
+
+          <rect x="20" y="260" width="130" height="50" rx="8" fill="none" stroke="#8B7CF6" stroke-width="1.2"/>
+          <text x="85" y="289" fill="#E7E9F5" font-size="12" text-anchor="middle" font-family="Inter">PostgreSQL</text>
+
+          <rect x="290" y="20" width="150" height="50" rx="8" fill="none" stroke="#F0997B" stroke-width="1.2"/>
+          <text x="365" y="42" fill="#E7E9F5" font-size="12" text-anchor="middle" font-family="Inter">YOLOv8</text>
+          <text x="365" y="57" fill="#E7E9F5" font-size="12" text-anchor="middle" font-family="Inter">classification</text>
+
+          <rect x="290" y="90" width="150" height="50" rx="8" fill="none" stroke="#F0997B" stroke-width="1.2"/>
+          <text x="365" y="112" fill="#E7E9F5" font-size="12" text-anchor="middle" font-family="Inter">Prophet</text>
+          <text x="365" y="127" fill="#E7E9F5" font-size="12" text-anchor="middle" font-family="Inter">forecasting</text>
+
+          <rect x="290" y="160" width="150" height="50" rx="8" fill="none" stroke="#F0997B" stroke-width="1.2"/>
+          <text x="365" y="182" fill="#E7E9F5" font-size="12" text-anchor="middle" font-family="Inter">OR-Tools</text>
+          <text x="365" y="197" fill="#E7E9F5" font-size="12" text-anchor="middle" font-family="Inter">route optimization</text>
+
+          <path d="M85,70 L85,140" stroke="#4FD8EE" stroke-width="1.2" marker-end="url(#arrow2)" fill="none"/>
+          <path d="M85,190 L85,260" stroke="#4FD8EE" stroke-width="1.2" marker-end="url(#arrow2)" fill="none"/>
+          <path d="M150,155 L290,45" stroke="#4FD8EE" stroke-width="1.2" marker-end="url(#arrow2)" fill="none"/>
+          <path d="M150,165 L290,115" stroke="#4FD8EE" stroke-width="1.2" marker-end="url(#arrow2)" fill="none"/>
+          <path d="M150,175 L290,185" stroke="#4FD8EE" stroke-width="1.2" marker-end="url(#arrow2)" fill="none"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="cs-section">
+    <h2>Tech stack</h2>
+    <div class="cs-stack-list">
+      <span class="tag">Kotlin</span><span class="tag">Android Studio</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">YOLOv8</span><span class="tag">Prophet</span><span class="tag">OR-Tools</span><span class="tag">Docker</span>
+    </div>
+  </section>
+
+  <section class="cs-section">
+    <h2>Challenges &amp; solutions</h2>
+    <ul class="cs-list">
+      <li><strong style="color:var(--text);">Field usability</strong> — the app needed to work for non-technical users in the field, so the Android UI was kept deliberately simple and task-focused.</li>
+      <li><strong style="color:var(--text);">System scope</strong> — rather than bolting AI on as an afterthought, the classification, forecasting, and routing components were designed as first-class parts of the architecture from the start.</li>
+      <li><strong style="color:var(--text);">Deployment readiness</strong> — containerizing the backend with Docker was a deliberate choice to make the architecture portable for scaled rollout beyond a single village.</li>
+    </ul>
+  </section>
+
+  <section class="cs-section">
+    <h2>Results</h2>
+    <div class="cs-metric-row">
+      <div class="cs-metric"><div class="m-num">Shipped</div><div class="m-label">Working Android app</div></div>
+      <div class="cs-metric"><div class="m-num">3-model</div><div class="m-label">AI architecture designed</div></div>
+      <div class="cs-metric"><div class="m-num">Container-ready</div><div class="m-label">Docker deployment</div></div>
+    </div>
+  </section>
+
+  <section class="cs-section">
+    <h2>Future improvements</h2>
+    <ul class="cs-list">
+      <li>Deploy the YOLOv8 classification model as a live inference endpoint connected to the app camera</li>
+      <li>Add a dashboard for municipal staff to view forecasts and optimized routes directly</li>
+      <li>Pilot the system in a real village deployment to validate the forecasting accuracy against actual collection data</li>
+    </ul>
+  </section>
+
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>&copy; 2026 Anagha K T P. Built with intent.</div>
+    <div class="footer-links">
+      <a href="index.html#about">About</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+<script src="assets/interactions.js" defer></script>
+
+</body>
+</html>

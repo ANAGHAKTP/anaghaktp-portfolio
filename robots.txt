@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://anaghaktp.github.io/anaghaktp-portfolio/sitemap.xml

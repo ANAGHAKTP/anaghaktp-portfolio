@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DocMind — RAG Case Study | Anagha K T P</title>
+<meta name="description" content="How Anagha K T P built DocMind, a retrieval-augmented generation chatbot that answers questions grounded in source documents.">
+<meta name="theme-color" content="#060814">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://anaghaktp.github.io/anaghaktp-portfolio/case-study-docmind.html">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="DocMind — RAG Case Study | Anagha K T P">
+<meta property="og:description" content="How Anagha K T P built DocMind, a retrieval-augmented generation chatbot that answers questions grounded in source documents.">
+<meta property="og:url" content="https://anaghaktp.github.io/anaghaktp-portfolio/case-study-docmind.html">
+<meta property="og:image" content="https://anaghaktp.github.io/anaghaktp-portfolio/assets/profile.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DocMind — RAG Case Study | Anagha K T P">
+<meta name="twitter:description" content="How Anagha K T P built DocMind, a retrieval-augmented generation chatbot that answers questions grounded in source documents.">
+<meta name="twitter:image" content="https://anaghaktp.github.io/anaghaktp-portfolio/assets/profile.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+<div id="page-loader" role="status" aria-live="polite"><div class="loader-mark">A.KTP<div class="loader-bar"></div></div></div>
+
+<nav class="scrolled" id="nav" aria-label="Primary">
+  <div class="nav-inner">
+    <div class="logo">A<span>.</span>KTP</div>
+    <div class="nav-links">
+      <a href="index.html#about">About</a>
+      <a href="index.html#skills">Skills</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#experience">Experience</a>
+    </div>
+    <a href="index.html#contact" class="nav-cta">Get in touch</a>
+  </div>
+</nav>
+
+<main id="main">
+<header class="cs-hero">
+  <div class="wrap">
+    <a href="index.html#projects" class="cs-back">&larr; Back to projects</a>
+    <div class="cs-meta-row">
+      <span class="tag">GenAI</span><span class="tag">RAG</span><span class="tag">Backend</span>
+    </div>
+    <h1 class="cs-title">DocMind — RAG-Based Document Chatbot</h1>
+    <p class="cs-sub">A retrieval-augmented generation system that answers questions grounded in a custom document set, instead of relying on an LLM's raw memory.</p>
+    <div class="cs-quicklinks">
+      <a href="https://github.com/ANAGHAKTP" target="_blank" class="btn btn-ghost">View on GitHub</a>
+      <a href="index.html?project=docmind#contact" class="btn btn-primary btn-discuss" data-project-id="docmind">Discuss this project</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="cs-section">
+    <h2>Overview</h2>
+    <p>DocMind is a chatbot that answers questions using a defined set of source documents rather than an LLM's general training data. The goal was simple to state and hard to get right: every answer should be traceable back to a passage in the source material, not a plausible-sounding hallucination.</p>
+  </section>
+
+  <section class="cs-section">
+    <h2>Problem statement</h2>
+    <p>Generic LLM chat is fast but unreliable for domain-specific questions — it can produce confident, wrong answers when the underlying knowledge isn't in the model's training data. Users working with large document sets needed a way to ask natural-language questions and get answers grounded in <em>their</em> documents, with enough context that the response is verifiable.</p>
+  </section>
+
+  <section class="cs-section">
+    <h2>Architecture</h2>
+    <div class="cs-two-col">
+      <div>
+        <p>The system follows a standard retrieval-augmented generation pattern: documents are chunked and embedded, queries are matched against the vector store, and the top-matching chunks are passed to the LLM as grounding context before it generates a response.</p>
+        <ul class="cs-list">
+          <li>Documents split into overlapping chunks to preserve context across boundaries</li>
+          <li>Each chunk embedded into a vector representation</li>
+          <li>Query embedded the same way and matched via similarity search</li>
+          <li>Top-k chunks injected into the prompt as grounding context</li>
+          <li>FastAPI endpoint exposes the pipeline for integration into other apps</li>
+        </ul>
+      </div>
+      <div class="cs-diagram">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+              <path d="M0,0 L8,4 L0,8 Z" fill="#4FD8EE"/>
+            </marker>
+          </defs>
+          <rect x="20" y="20" width="120" height="50" rx="8" fill="none" stroke="#8B7CF6" stroke-width="1.2"/>
+          <text x="80" y="49" fill="#E7E9F5" font-size="12" text-anchor="middle" font-family="Inter">Documents</text>
+
+          <rect x="20" y="130" width="120" height="50" rx="8" fill="none" stroke="#8B7CF6" stroke-width="1.2"/>
+          <text x="80" y="152" fill="#E7E9F5" font-size="12" text-anchor="middle" font-family="Inter">Chunk +</text>
+          <text x="80" y="167" fill="#E7E9F5" font-size="12" text-anchor="middle" font-family="Inter">Embed</text>
+
+          <rect x="20" y="240" width="120" height="50" rx="8" fill="none" stroke="#4FD8EE" stroke-width="1.2"/>
+          <text x="80" y="269" fill="#E7E9F5" font-size="12" text-anchor="middle" font-family="Inter">Vector store</text>
+
+          <rect x="180" y="240" width="120" height="50" rx="8" fill="none" stroke="#34D399" stroke-width="1.2"/>
+          <text x="240" y="262" fill="#E7E9F5" font-size="12" text-anchor="middle" font-family="Inter">User query</text>
+          <text x="240" y="277" fill="#E7E9F5" font-size="12" text-anchor="middle" font-family="Inter">(embedded)</text>
+
+          <rect x="320" y="130" width="120" height="50" rx="8" fill="none" stroke="#4FD8EE" stroke-width="1.2"/>
+          <text x="380" y="152" fill="#E7E9F5" font-size="12" text-anchor="middle" font-family="Inter">Top-k chunks</text>
+          <text x="380" y="167" fill="#E7E9F5" font-size="12" text-anchor="middle" font-family="Inter">retrieved</text>
+
+          <rect x="320" y="20" width="120" height="50" rx="8" fill="none" stroke="#F0997B" stroke-width="1.2"/>
+          <text x="380" y="42" fill="#E7E9F5" font-size="12" text-anchor="middle" font-family="Inter">LLM +</text>
+          <text x="380" y="57" fill="#E7E9F5" font-size="12" text-anchor="middle" font-family="Inter">grounded answer</text>
+
+          <path d="M80,70 L80,130" stroke="#4FD8EE" stroke-width="1.2" marker-end="url(#arrow)" fill="none"/>
+          <path d="M80,180 L80,240" stroke="#4FD8EE" stroke-width="1.2" marker-end="url(#arrow)" fill="none"/>
+          <path d="M140,265 L180,265" stroke="#4FD8EE" stroke-width="1.2" marker-end="url(#arrow)" fill="none"/>
+          <path d="M240,240 C240,190 300,170 320,160" stroke="#4FD8EE" stroke-width="1.2" marker-end="url(#arrow)" fill="none"/>
+          <path d="M380,130 L380,70" stroke="#4FD8EE" stroke-width="1.2" marker-end="url(#arrow)" fill="none"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="cs-section">
+    <h2>Tech stack</h2>
+    <div class="cs-stack-list">
+      <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">LLM APIs</span><span class="tag">Vector embeddings</span><span class="tag">RAG pipeline</span>
+    </div>
+  </section>
+
+  <section class="cs-section">
+    <h2>Challenges &amp; solutions</h2>
+    <ul class="cs-list">
+      <li><strong style="color:var(--text);">Chunking strategy</strong> — too small and context is lost, too large and retrieval precision drops. Resolved with overlapping chunks sized to keep single ideas intact.</li>
+      <li><strong style="color:var(--text);">Irrelevant retrieval</strong> — early versions occasionally pulled loosely related chunks. Addressed by tuning similarity thresholds and top-k values.</li>
+      <li><strong style="color:var(--text);">API integration</strong> — designed the pipeline behind a FastAPI endpoint from the start so it could be dropped into other applications, not just used as a standalone script.</li>
+    </ul>
+  </section>
+
+  <section class="cs-section">
+    <h2>Results</h2>
+    <div class="cs-metric-row">
+      <div class="cs-metric"><div class="m-num">Grounded</div><div class="m-label">Answers traceable to source</div></div>
+      <div class="cs-metric"><div class="m-num">API-first</div><div class="m-label">Ready for integration</div></div>
+      <div class="cs-metric"><div class="m-num">End-to-end</div><div class="m-label">Working pipeline</div></div>
+    </div>
+  </section>
+
+  <section class="cs-section">
+    <h2>Future improvements</h2>
+    <ul class="cs-list">
+      <li>Add a reranking step after initial retrieval to further improve answer precision</li>
+      <li>Support multi-document source citation in the response itself</li>
+      <li>Add a lightweight eval harness to track answer groundedness over time</li>
+    </ul>
+  </section>
+
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>&copy; 2026 Anagha K T P. Built with intent.</div>
+    <div class="footer-links">
+      <a href="index.html#about">About</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+<script src="assets/interactions.js" defer></script>
+
+</body>
+</html>
