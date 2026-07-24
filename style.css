@@ -563,11 +563,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+  }
+  .resume-preview-link {
+    display: block;
+    width: 100%;
+    max-width: 430px; /* Increased by ~13% from 380px */
+    text-decoration: none;
+    outline: none;
   }
   .resume-card {
     position: relative;
     width: 100%;
-    max-width: 380px;
     border-radius: 16px;
     border: 1px solid var(--line);
     background: var(--surface);
@@ -576,9 +583,15 @@
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
   }
-  .resume-card:hover {
+  .resume-preview-link:hover .resume-card,
+  .resume-preview-link:focus-visible .resume-card {
+    transform: translateY(-8px) scale(1.02);
     border-color: var(--cyan);
     box-shadow: 0 30px 60px rgba(79,216,238,0.12), 0 0 25px rgba(139,124,246,0.08);
+  }
+  .resume-preview-link:focus-visible .resume-card {
+    outline: 2px solid var(--cyan);
+    outline-offset: 3px;
   }
   .resume-card-glow {
     position: absolute;
@@ -590,7 +603,8 @@
     opacity: 0;
     transition: opacity 0.4s ease;
   }
-  .resume-card:hover .resume-card-glow {
+  .resume-preview-link:hover .resume-card-glow,
+  .resume-preview-link:focus-visible .resume-card-glow {
     opacity: 1;
   }
   .resume-card-inner {
